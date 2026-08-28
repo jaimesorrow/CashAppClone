@@ -65,6 +65,11 @@ dependencies {
     implementation("androidx.datastore:datastore-preferences:1.1.1")
 
     debugImplementation("androidx.compose.ui:ui-tooling")
+    debugImplementation("androidx.compose.ui:ui-test-manifest")
     testImplementation("junit:junit:4.13.2")
+    // The BOM has to be declared for the androidTest classpath too — it does not
+    // inherit the one above, so ui-test-junit4 would otherwise resolve with an
+    // empty version and fail: "Could not find androidx.compose.ui:ui-test-junit4:".
+    androidTestImplementation(composeBom)
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
 }
